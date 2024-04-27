@@ -1,7 +1,7 @@
 import requests
 import os
 
-
+# TODO try to get a pattern for local students. Eg: 020717011689. Or maybe it's related to their ikad idk.
 def download_images(year, month, start=10000, end=11000):
     base_url = "https://academic.utm.my/UGStudent/PhotoStudent.ashx?nokp="
     error_count = 0
@@ -13,7 +13,7 @@ def download_images(year, month, start=10000, end=11000):
         os.makedirs(directory)
 
     for i in range(start, end + 1):  # Set range from start to end
-        nokp = f"{year}{month}M{i:05d}"
+        nokp = f"{year}{month}M{i:05d}"  # I wonder what M stands for?
         url = base_url + nokp
         response = requests.get(url)
         if response.status_code == 200 and response.content:
@@ -34,15 +34,18 @@ def download_images(year, month, start=10000, end=11000):
 
 
 # Example usage: download images for November 2021, from 10000 to 11000
-# download_images("2017", "01", 10000, 11000)
-# download_images("2017", "02", 10000, 11000)
-# download_images("2017", "03", 10000, 11000)
+download_images("2005", "01", 10000, 11000)
+# download_images("2006", "01", 10000, 11000)
+# download_images("2007", "01", 10000, 11000)
+# download_images("2008", "01", 10000, 11000)
+# download_images("2009", "01", 10000, 11000)
+#download_images("2010", "01", 10000, 11000)
 # download_images("2017", "04", 10000, 11000)
 # download_images("2017", "05", 10000, 11000)
-download_images("2017", "06", 10000, 11000)
-download_images("2017", "07", 10000, 11000)
-download_images("2017", "08", 10000, 11000)
-download_images("2017", "09", 10000, 11000)
-download_images("2017", "10", 10000, 11000)
-download_images("2017", "11", 10000, 11000)
-download_images("2017", "12", 10000, 11000)
+# download_images("2017", "06", 10000, 11000)
+# download_images("2017", "07", 10000, 11000)
+# download_images("2017", "08", 10000, 11000)
+# download_images("2017", "09", 10000, 11000)
+# download_images("2017", "10", 10000, 11000)
+# download_images("2017", "11", 10000, 11000)
+# download_images("2017", "12", 10000, 11000)
