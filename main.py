@@ -5,7 +5,7 @@ import os
 def download_images(year, month, start=10000, end=11000):
     base_url = "https://academic.utm.my/UGStudent/PhotoStudent.ashx?nokp="
     error_count = 0
-    max_errors = 15
+    max_errors = 15 # Some images have +100 index distance.
 
     # Create directory for the year and month
     directory = f"{year}/{month}"
@@ -34,18 +34,15 @@ def download_images(year, month, start=10000, end=11000):
 
 
 # Example usage: download images for November 2021, from 10000 to 11000
-download_images("2005", "01", 10000, 11000)
-# download_images("2006", "01", 10000, 11000)
-# download_images("2007", "01", 10000, 11000)
-# download_images("2008", "01", 10000, 11000)
-# download_images("2009", "01", 10000, 11000)
-#download_images("2010", "01", 10000, 11000)
-# download_images("2017", "04", 10000, 11000)
-# download_images("2017", "05", 10000, 11000)
-# download_images("2017", "06", 10000, 11000)
-# download_images("2017", "07", 10000, 11000)
-# download_images("2017", "08", 10000, 11000)
-# download_images("2017", "09", 10000, 11000)
-# download_images("2017", "10", 10000, 11000)
-# download_images("2017", "11", 10000, 11000)
-# download_images("2017", "12", 10000, 11000)
+download_images("2021", "01", 10000, 11000)
+download_images("2021", "02", 10000, 11000)
+download_images("2021", "03", 10000, 11000)
+download_images("2021", "04", 10000, 11000)
+download_images("2021", "05", 10000, 11000)
+download_images("2021", "06", 10000, 11000)
+download_images("2021", "07", 10000, 11000)
+download_images("2021", "08", 10000, 11000)
+download_images("2021", "09", 10000, 11000)
+download_images("2021", "10", 10000, 11000)
+download_images("2021", "11", 10000, 11000)
+download_images("2021", "12", 10000, 11000)
