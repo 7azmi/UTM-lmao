@@ -17,7 +17,7 @@ def download_photos(year, month):
     print(f"\n>> Checking month: {month}")
 
     for i in range(start_index, end_index + 1):
-        nokp = f"{year}{month}M{i:05d}"
+        nokp = f"{year}{month:02d}M{i:05d}"
         url = f"https://academic.utm.my/UGStudent/PhotoStudent.ashx?nokp={nokp}"
         response = requests.get(url)
 
@@ -38,7 +38,6 @@ def download_photos(year, month):
                 break
 
     print(f"\n--- Download process for {year}-{month} complete. ---")
-
 
 for i in range(1,13):
     download_photos(2022,i)
