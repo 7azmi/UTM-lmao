@@ -2,15 +2,15 @@ import requests
 import os
 import csv
 
-def download_photo(ic, folder="photos"):
-    os.makedirs(folder, exist_ok=True)
+def download_photo(ic, output_folder="photos"):
+    os.makedirs(output_folder, exist_ok=True)
 
     url = f"https://academic.utm.my/UGStudent/PhotoStudent.ashx?nokp={ic}"
     res = requests.get(url)
 
     if res.status_code == 200 and len(res.content) > 100:
 
-        filepath = os.path.join(folder, f"{ic}.jpg")
+        filepath = os.path.join(output_folder, f"{ic}.jpg")
         with open(filepath, "wb") as f:
             f.write(res.content)
         print(f"OK Downloaded {ic}.jpg")
@@ -35,14 +35,17 @@ def batch_download(prefix, start, end, output_folder="photos", csv_file="results
                 writer.writerow([ic, "Not Found", ""])
 
             ###  stop if too many failing in a raw
-            if not filepath and num > start + 200:
+            if not filepath and num > start + 300:
                 print("Too many missing ICs, stopping batch.")
                 break
 
 if __name__ == "__main__":
 
-    prefix = "202403M"   # here so can be adjusted for the batch
-    start = 10001        # to the start point
+    prefix = ["202403M", "202410M", "202503M"]   # here so can be adjusted for the batch
+    folders_name = ["2024/03", "2024/10", "2025/03"]
+
+    start = 10001
     end = 10500  
 
-    batch_download(prefix, start, end)
+    for pre, name in zip(prefix, folders_name):
+        batch_download(pre, start, end, output_folder=name)
